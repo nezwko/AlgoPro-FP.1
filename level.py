@@ -7,6 +7,7 @@ from pytmx.util_pygame import load_pygame
 from support import *
 from soil import *
 from menu import Menu
+from overlay import Overlay
 
 
 class Level:
@@ -25,6 +26,8 @@ class Level:
         self.soil_layer = SoilLayer(self.all_sprites)
 
         self.setup()
+
+        self.overlay = Overlay(self.player)
         self.menu = Menu(self.player, self.toggle_shop)
         self.shop_active = False
 
@@ -164,6 +167,7 @@ class Level:
         #Draw
         self.display_surface.fill('black')
         self.all_sprites.custom_draw(self.player)
+        self.overlay.display()
 
         #Update
         if self.shop_active:

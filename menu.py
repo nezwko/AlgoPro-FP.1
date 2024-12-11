@@ -1,7 +1,7 @@
 import pygame
 from settings import *
 from timer import Timer
-
+from overlay import *
 
 class Menu:
 	def __init__(self, player, toggle_menu):
@@ -25,13 +25,6 @@ class Menu:
 		# movement
 		self.index = 0
 		self.timer = Timer(200)
-
-	def display_money(self):
-		text_surf = self.font.render(f'${self.player.money}', False, 'Black')
-		text_rect = text_surf.get_rect(midbottom = (SCREEN_WIDTH / 2,SCREEN_HEIGHT - 20))
-
-		pygame.draw.rect(self.display_surface,'White',text_rect.inflate(10,10),0,4)
-		self.display_surface.blit(text_surf,text_rect)
 
 	def setup(self):
 
@@ -120,7 +113,6 @@ class Menu:
 
 	def update(self):
 		self.input()
-		self.display_money()
 
 		for text_index, text_surf in enumerate(self.text_surfs):
 			top = self.main_rect.top + text_index * (text_surf.get_height() + (self.padding * 2) + self.space)

@@ -130,7 +130,7 @@ class Level:
         elif item == 'Stone':
             self.player.item_inventory['Stone'] += 2
         elif item == 'Seed':
-            if random.random() < 1:
+            if random.random() < 0.3:
                 self.player.seed_inventory['Seed'] += 1
 
     def toggle_shop(self):

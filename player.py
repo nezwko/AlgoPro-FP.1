@@ -56,7 +56,7 @@ class Player(pygame.sprite.Sprite):
             'Seed': 2,
         }
 
-        self.money = 200
+        self.money = 0
         
         #interaction
         self.log_sprites = log_sprites

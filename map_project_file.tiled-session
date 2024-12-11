@@ -1,0 +1,113 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "MAP.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "C:/Users/BRIDGE.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/GRASS4.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/TREES2.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/nezza/Desktop/NEW_MAP_REAL.tmx": {
+            "scale": 0.39261718749999996,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 801.034722913143,
+                "y": 640.5730773057409
+            }
+        },
+        "C:/Users/nezza/Documents/BRIDGE.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/nezza/Documents/GRASS4.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/nezza/Documents/TREES2.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/nezza/Documents/water.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/water.tsx": {
+            "scaleInDock": 1
+        },
+        "Fences.tsx": {
+            "scaleInDock": 4,
+            "scaleInEditor": 1
+        },
+        "Grass.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Grass2.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "MAP.tmx": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 253.5,
+                "y": 307.5
+            }
+        },
+        "NEW_MAP_REAL.tmx": {
+            "scale": 0.6033984375,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 801.2947497896032,
+                "y": 640.5386159124749
+            }
+        },
+        "Plants.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Water.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.externalTilesetPath": "C:/Users/nezza/Documents/CS.1/AlgoPro-FP.1",
+    "last.imagePath": "C:/Users/nezza/Documents/CS.1/AlgoPro-FP.1/graphics/tileset",
+    "map.height": 40,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 50,
+    "openFiles": [
+        "MAP.tmx",
+        "Grass.tsx",
+        "Plants.tsx",
+        "Fences.tsx",
+        "C:/Users/nezza/Desktop/NEW_MAP_REAL.tmx",
+        "Water.tsx"
+    ],
+    "project": "map_project_file.tiled-project",
+    "recentFiles": [
+        "Water.tsx",
+        "C:/Users/nezza/Desktop/NEW_MAP_REAL.tmx",
+        "Fences.tsx",
+        "Plants.tsx",
+        "Grass.tsx",
+        "MAP.tmx",
+        "Grass2.tsx",
+        "NEW_MAP_REAL.tmx"
+    ],
+    "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}

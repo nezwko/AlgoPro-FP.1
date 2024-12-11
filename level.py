@@ -32,27 +32,27 @@ class Level:
 
 
     def setup(self):
-        tmx_data = load_pygame('NEW_MAP_REAL.tmx')
+        tmx_data = load_pygame('MAP.tmx')
 
         #Water
         water_frames = import_folder('graphics/water')
         for x,y, surf in tmx_data.get_layer_by_name('Water').tiles():
             Water((x*TILE_SIZE, y*TILE_SIZE), water_frames, self.all_sprites)
 
-        #Flowers
-        for x, y, surf in tmx_data.get_layer_by_name('Flowers').tiles():
+        #Decorations
+        for x, y, surf in tmx_data.get_layer_by_name('Decorations').tiles():
             upscaled_surf = pygame.transform.scale(surf, (surf.get_width() * UPSCALE_FACTOR, surf.get_height() * UPSCALE_FACTOR))
             Generic((x * NEW_TILE_SIZE_UPSCALED, y * NEW_TILE_SIZE_UPSCALED), upscaled_surf, [self.all_sprites, self.collision_sprites])
 
-        #Trees
-        for x, y, surf in tmx_data.get_layer_by_name('Trees').tiles():
+        #Decorations2
+        for x, y, surf in tmx_data.get_layer_by_name('Decorations2').tiles():
             upscaled_surf = pygame.transform.scale(surf, (surf.get_width() * UPSCALE_FACTOR, surf.get_height() * UPSCALE_FACTOR))
             Generic((x * NEW_TILE_SIZE_UPSCALED, y * NEW_TILE_SIZE_UPSCALED), upscaled_surf, [self.all_sprites, self.collision_sprites])
 
-        #Bridge
-        for x, y, surf in tmx_data.get_layer_by_name('Bridge').tiles():
+        #Fences
+        for x, y, surf in tmx_data.get_layer_by_name('Fences').tiles():
             upscaled_surf = pygame.transform.scale(surf, (surf.get_width() * UPSCALE_FACTOR, surf.get_height() * UPSCALE_FACTOR))
-            Generic((x * NEW_TILE_SIZE_UPSCALED, y * NEW_TILE_SIZE_UPSCALED), upscaled_surf, self.all_sprites)
+            Generic((x * NEW_TILE_SIZE_UPSCALED, y * NEW_TILE_SIZE_UPSCALED), upscaled_surf, [self.all_sprites, self.collision_sprites])
 
         #Logs 
         for obj in tmx_data.get_layer_by_name('Logs'):

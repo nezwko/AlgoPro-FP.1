@@ -69,7 +69,7 @@ class SoilLayer:
         grid = [[[] for _ in range(h_tiles)] for _ in range(v_tiles)]
         
         # Load the tile map and populate the grid
-        for x, y, _ in load_pygame('NEW_MAP_REAL.tmx').get_layer_by_name('Farmable').tiles():
+        for x, y, _ in load_pygame('MAP.tmx').get_layer_by_name('Farmable').tiles():
             if 0 <= x < h_tiles and 0 <= y < v_tiles:  # Ensure x and y are within bounds
                 grid[y][x].append('F')  # Set the cell to contain 'F'
 

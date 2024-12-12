@@ -6,7 +6,7 @@ from sprites import *
 from pytmx.util_pygame import load_pygame
 from support import *
 from soil import *
-from menu import Menu
+from menu import *
 from overlay import Overlay
 
 
@@ -29,10 +29,9 @@ class Level:
 
         self.overlay = Overlay(self.player)
         self.menu = Menu(self.player, self.toggle_shop)
+        self.show_instructions = False 
+        self.instruction = Instructions(self.player, self.toggle_instructions)
         self.shop_active = False
-
-        
-
 
     def setup(self):
         tmx_data = load_pygame('MAP.tmx')
@@ -111,7 +110,8 @@ class Level:
                                      grass_sprites = self.grass_sprites,
                                      soil_layer = self.soil_layer,
                                      interaction_sprites = self.interaction_sprites,
-                                     toggle_shop = self.toggle_shop)
+                                     toggle_shop = self.toggle_shop,
+                                     toggle_instructions = self.toggle_instructions)
                 
             if obj.name == 'Trader':
                 Interaction((obj.x * UPSCALE_FACTOR,obj.y * UPSCALE_FACTOR), (obj.width, obj.height), self.interaction_sprites, obj.name)
@@ -133,8 +133,11 @@ class Level:
         elif item == 'Stone':
             self.player.item_inventory['Stone'] += 2
         elif item == 'Seed':
-            if random.random() < 0.3:
+            if random.random() <= 0.3:
                 self.player.seed_inventory['Seed'] += 1
+
+    def toggle_instructions(self):
+        self.show_instructions = not self.show_instructions
 
     def toggle_shop(self):
         self.shop_active = not self.shop_active
@@ -169,9 +172,12 @@ class Level:
         self.all_sprites.custom_draw(self.player)
         self.overlay.display()
 
-        #Update
+        # Update
         if self.shop_active:
-           self.menu.update()
+            self.menu.update()    # Draw instructions
+        elif self.show_instructions:    # Check if instructions should be shown
+            self.instruction.update()
+            self.instruction.draw()
 
         else:
             self.all_sprites.update(dt)

@@ -4,10 +4,11 @@ from settings import *
 from support import *
 from timer import Timer
 from sprites import *
+from menu import *
 
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, pos, group, collision_sprites, log_sprites, rock_sprites, grass_sprites, interaction_sprites, soil_layer, toggle_shop) -> None:
+    def __init__(self, pos, group, collision_sprites, log_sprites, rock_sprites, grass_sprites, interaction_sprites, soil_layer, toggle_shop, toggle_instructions) -> None:
         super().__init__(group)
 
         self.import_assets()
@@ -66,6 +67,7 @@ class Player(pygame.sprite.Sprite):
         self.interaction_sprites = interaction_sprites
 
         self.toggle_shop = toggle_shop
+        self.toggle_instructions = toggle_instructions
 
     def import_assets(self):
         self.animations = {'up':[], 'down':[], 'left':[], 'right':[],
@@ -168,6 +170,8 @@ class Player(pygame.sprite.Sprite):
                     else:
                         self.status = 'left_idle'
 
+            if keys[pygame.K_i]:
+                self.toggle_instructions()
 
     def get_status(self):
         #if player not moving add idle

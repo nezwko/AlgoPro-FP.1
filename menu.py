@@ -3,6 +3,28 @@ from settings import *
 from timer import Timer
 from overlay import *
 
+class Instructions:
+    def __init__(self, player, toggle_instructions):
+        # General setup
+        self.player = player
+        self.toggle_instructions = toggle_instructions
+        self.display_surface = pygame.display.get_surface()
+
+        # Load the instruction image
+        self.instruction_image = pygame.image.load('instruction.jpg').convert_alpha()
+        self.image_rect = self.instruction_image.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
+
+    def input(self):
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_ESCAPE]:  # Press 'I' to open the instructions
+            self.toggle_instructions()  # This will toggle the visibility
+
+    def update(self):
+        self.input()
+
+    def draw(self):
+        self.display_surface.blit(self.instruction_image, self.image_rect)
+
 class Menu:
 	def __init__(self, player, toggle_menu):
 
@@ -25,6 +47,11 @@ class Menu:
 		# movement
 		self.index = 0
 		self.timer = Timer(200)
+
+		# Instruction toggle
+		self.show_instructions = False
+		self.instructions = Instructions(self.player, self.toggle_instructions)
+
 
 	def setup(self):
 
@@ -86,6 +113,9 @@ class Menu:
 		if self.index > len(self.options) - 1:
 			self.index = 0
 
+	def toggle_instructions(self):
+		self.show_instructions = not self.show_instructions
+
 	def show_entry(self, text_surf, amount, top, selected):
 
 		# background
@@ -112,10 +142,23 @@ class Menu:
 				self.display_surface.blit(self.buy_text,pos_rect)
 
 	def update(self):
-		self.input()
+		if self.show_instructions:
+			self.instructions.update()
+		else:
+			self.input()
 
 		for text_index, text_surf in enumerate(self.text_surfs):
 			top = self.main_rect.top + text_index * (text_surf.get_height() + (self.padding * 2) + self.space)
 			amount_list = list(self.player.item_inventory.values()) + list(self.player.seed_inventory.values())
 			amount = amount_list[text_index]
 			self.show_entry(text_surf, amount, top, self.index == text_index)
+
+	def draw(self):
+		if self.show_instructions:
+			self.instructions.draw()
+		else:
+			for text_index, text_surf in enumerate(self.text_surfs):
+				top = self.main_rect.top + text_index * (text_surf.get_height() + (self.padding * 2) + self.space)
+				amount_list = list(self.player.item_inventory.values()) + list(self.player.seed_inventory.values())
+				amount = amount_list[text_index]
+				self.show_entry(text_surf, amount, top, self.index == text_index)

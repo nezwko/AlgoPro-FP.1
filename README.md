@@ -1,4 +1,4 @@
-# Algorithm & Programming Final Project: Sunny Sprouts 🌱🌸
+# AlgoPro Final Project: Sunny Sprouts 🌱🌸
 
 #### Project Name: Sunny Sprouts
 

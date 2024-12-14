@@ -44,7 +44,7 @@ class Level:
         water_frames = import_folder('graphics/water')
         for x,y, surf in tmx_data.get_layer_by_name('Water').tiles():
             Water((x*TILE_SIZE, y*TILE_SIZE), water_frames, self.all_sprites)
-                #Tile positions is scaled by TILE_SIZE
+                #Tile positions is scaled by TILE_SIZE 
                 #Animations set as water_frames
                 #The water tiles are added to the all_sprites group for rendering
 

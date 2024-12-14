@@ -6,8 +6,8 @@ from sprites import *
 from pytmx.util_pygame import load_pygame
 from support import *
 from soil import *
-from menu import *
-from overlay import Overlay
+from inventory import *
+from ui import Overlay
 
 
 class Level:
@@ -192,35 +192,40 @@ class Level:
 
         #Draw
         self.display_surface.fill('black') #Fill screen with a black color
-        self.all_sprites.custom_draw(self.player)
-        self.overlay.display()
+        self.all_sprites.custom_draw(self.player) #Draw all sprites
+        self.overlay.display() #Display Overlay
 
-        # Update
+        #Check and Update Instruction and Menu
         if self.shop_active:
-            self.menu.update()    # Draw instructions
-        elif self.show_instructions:    # Check if instructions should be shown
+            self.menu.update() 
+        elif self.show_instructions:    
             self.instruction.update()
             self.instruction.draw()
 
+        #Update game state normally
         else:
             self.all_sprites.update(dt)
             self.plant_collision()
 
 class CameraGroup(pygame.sprite.Group):
     def __init__(self):
-        super().__init__()
-        self.display_surface = pygame.display.get_surface()
-        self.offset = pygame.math.Vector2()
+        super().__init__() #Initializes the sprite group base class
+        self.display_surface = pygame.display.get_surface() #Get Screen Surface
+        self.offset = pygame.math.Vector2() #Initialize the offset vector used for camera scrolling
           
     def custom_draw(self, player):
+        #Set camera offset to center
         self.offset.x = player.rect.centerx - SCREEN_WIDTH / 2
         self.offset.y = player.rect.centery - SCREEN_HEIGHT / 2
 
+        #Loop through all sprite layers
         for layer in LAYERS.values():
+            #Sorts in their vertical position
             for sprite in sorted(self.sprites(), key = lambda sprite: sprite.rect.centery):
-                if sprite.z == layer:
+                if sprite.z == layer: #Check if sprite is part of current layer
+                    #Copy the sprite's rect and apply the offset(simulating camera scroll)
                     offset_rect = sprite.rect.copy()
                     offset_rect.center -= self.offset
-                    self.display_surface.blit(sprite.image, offset_rect)
+                    self.display_surface.blit(sprite.image, offset_rect) #Draw sprite to new offset position
 
     

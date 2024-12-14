@@ -1,7 +1,7 @@
 import pygame
 from settings import *
 from timer import Timer
-from level import *
+from spritelayer import *
 
 #Generic Class is for all objects that need to be sprite-based
 class Generic(pygame.sprite.Sprite):
@@ -79,7 +79,7 @@ class Log_Class(Generic):
 
     def check_death(self):
         if self.health <= 0: #Checks if health is gone
-            Particle(self.rect.topleft, self.image, self.groups()[0], LAYERS['Death'], 300)
+            Particle(self.rect.topleft, self.image, self.groups()[0], LAYERS['Main'])
             #Calls the Particle Class
             self.alive = False #Log set as dead
             self.kill() #Removes log from game
@@ -103,11 +103,12 @@ class Rock_Class(Generic):
         self.health -= 1
 
     def check_death(self):
-        if self.health <= 0:
-            Particle(self.rect.topleft, self.image, self.groups()[0], LAYERS['Death'], 300)
+        if self.health <= 0: 
+            Particle(self.rect.topleft, self.image, self.groups()[0], LAYERS['Main'])
             self.alive = False
-            self.kill()
             self.player_add('Stone')
+            self.kill()
+            
     
     def update(self,dt):
         if self.alive:
@@ -128,7 +129,7 @@ class Grass_Class(Generic):
 
     def check_death(self):
         if self.health <= 0:
-            Particle(self.rect.topleft, self.image, self.groups()[0], LAYERS['Death'], 300)
+            Particle(self.rect.topleft, self.image, self.groups()[0], LAYERS['Main'])
             self.alive = False
             self.kill()
             self.player_add('Seed')

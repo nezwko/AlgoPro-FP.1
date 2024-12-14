@@ -1,6 +1,6 @@
 import pygame, sys
 from settings import *
-from level import Level        
+from spritelayer import Level        
 
 class Game:                    
     def __init__(self):   
